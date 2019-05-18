@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        {{grade}}
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js "></script>
+<script>
+    var vm = new Vue({
+            el: '#app',
+            template: '<h2 ref="grade">{{grade}}</h2>', //模板字符串.会替换掉挂载的元素
+            data: {
+                grade: '1701B'
+            },
+            beforeCreate() { //初始化事件.收集配置项
+                console.log('beforeCreate')
+                console.log(this.$el, this.$data, this.grade);
+            },
+            created() { //把收集到的配置项挂载到实例上
+                console.log('created')
+                console.log(this.$el, this.$data, this.grade);
+            },
+            beforMount() { //生成dom之前
+                console.log('beforMount')
+                console.log(this.$el, this.$data, this.grade);
+            },
+            mounted() { //创建完成dom节点
+                console.log('mounted')
+                console.log(this.$el, this.$data, this.grade);
+            },
+            beforeUpdate() { //数据更新之前
+                console.log('beforeUpdate', this.$refs.grade.innerHTML) //获取的时候模板里面的所有ref这个属性的dom, 是一个对象
+                console.log(this.$el, this.$data, this.grade);
+            },
+            updated() { //数据更新之后
+                console.log('updated', this.$refs.grade.innerHTML)
+                console.log(this.$el, this.$data, this.grade);
+            }
+        })
+        // vm.$mount('#app')//外部挂载
+</script>
+
+</html>

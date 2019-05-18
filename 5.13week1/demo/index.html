@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .box {
+            width: 100px;
+            height: 100px;
+            background: red;
+            /* display: block; */
+        }
+        
+        [v-cloak] {
+            display: none;
+        }
+        
+        img {
+            width: 100%;
+            height: 200px;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <h1>{{grade}}</h1>
+        <h1>{{msg}}</h1>
+        <a href="http://www.baidu.com" @click.prevent.once>跳转</a>
+
+
+
+        <div v-html='str'></div>
+        <div v-text='grade'></div>
+        <input type="text" @keyup.13='num++'>
+        <p>{{num}}</p>
+        <div @click.self='btnClick'>
+            <button @click.self='flag=!flag'>点我</button>
+            <div class="box" v-show='flag'>
+
+            </div>
+        </div>
+
+        <ul>
+            <li v-for='(item,index,key) in list'>
+
+                <img :src='item.img' alt="">
+                <a v-bind:href='item.href'>{{item.name}}</a>
+                <br>
+                <span v-text:age='item.age'></span><br>
+                <span v-text:sex='item.sex'></span>
+            </li>
+        </ul>
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            grade: '1701B',
+            msg: 'hello vue',
+            flag: true,
+            str: '<p>川A7777</p>',
+            num: 1,
+            list: [{
+                name: 'lili',
+                age: 23,
+                sex: '女',
+                img: 'img/1.jpg',
+                href: 'http://www.baidu.com'
+            }, {
+                name: '钢铁侠',
+                age: 38,
+                sex: '男',
+                img: "img/2.jpg",
+                href: 'http://www.baidu.com'
+            }, {
+                name: '超人',
+                age: 35,
+                sex: '男',
+                img: "img/3.jpg",
+                href: 'http://www.baidu.com'
+            }]
+        },
+        methods: {
+            btnClick() {
+                console.log(666)
+            }
+        }
+    })
+</script>
+
+</html>

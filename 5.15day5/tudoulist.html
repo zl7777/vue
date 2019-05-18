@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    #app {
+        background: #ccc;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <form v-on:submit.prevent="addNewTodo">
+            <label for="new-todo">tudouList</label>
+            <input v-model="newTodoText" id="new-todo" placeholder="" @keyup.13=''>
+        </form>
+        <h3>正在进行的</h3>
+        <ul>
+            <li is="todo-item" v-for="(todo, index) in todos" v-bind:key="todo.id" v-bind:title="todo.title" v-on:remove="todos.splice(index, 1)"></li>
+        </ul>
+        <h3>已经完成</h3>
+        <ol>
+            <li is="todo-item" v-for="(todo, index) in todos" v-bind:key="todo.id" v-bind:title="todo.title" v-on:remove="todos.splice(index, 1)"></li>
+        </ol>
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    Vue.component('todo-item', {
+        template: '<li @click="$emit(\'remove\')"><input type="checkbox" name="" id="">{{ title }} </li>',
+        props: ['title']
+    })
+
+    new Vue({
+        el: '#app',
+        data: {
+            newTodoText: '',
+            todos: [{
+                id: 1,
+                title: '这个是第一个',
+            }, {
+                id: 2,
+                title: '这个是第二个',
+            }, {
+                id: 3,
+                title: '这个是第三个'
+            }],
+            nextTodoId: 4
+        },
+        methods: {
+            addNewTodo: function() {
+                this.todos.push({
+                    id: this.nextTodoId++,
+                    title: this.newTodoText
+                })
+                this.newTodoText = ''
+            }
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <my-header></my-header>
+        <my-body></my-body>
+    </div>
+    <div id="box">
+        <my-header></my-header>
+    </div>
+    <template id="tpl">
+        <div>
+            <p>班级:{{grade}}</p>
+        </div>
+    </template>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    Vue.component('myHeader', {
+        template: '<div><span>{{grade}}</span></div>',
+        data() {
+            return {
+                grade: '1701B'
+            }
+        },
+        created() {
+
+        }
+    })
+    new Vue({
+        el: '#app',
+        data: {
+
+        },
+        components: {
+            myBody: { //局部 注册
+                template: '#tpl',
+                data() {
+                    return {
+                        grade: '1701B@@'
+                    }
+                }
+            }
+        }
+    })
+    new Vue({
+        el: '#box'
+    })
+</script>
+
+</html>

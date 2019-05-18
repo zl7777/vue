@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <input type="text" v-model='msg'>
+        <div> 反转之后的是:{{reverseMsg}}</div>
+        <div>大于80 的数据是:{{Cont}}</div>
+        <button @click='btn'>点击</button>
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js "></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg: '1701B',
+            arr: [88, 89, 66, 55, 44]
+        },
+        computed: { //计算属性   使用的时候不用加括号
+            // reverseMsg() { //计算属性要把最终的结果return 出去,多个计算属性用逗号隔开
+            //     return this.msg.split('').reverse().join('') //反转
+            // },
+            reverseMsg: { //访问器属性
+                get() { //获取值
+                    console.log('get')
+                },
+                set(val) { //设置值
+                    console.log(val, 'set')
+                }
+            },
+            Cont() {
+                return this.arr.filter(item => item > 60) //判断分数
+            }
+        },
+        methods: { //方法也可以实现  使用的时候必须加括号来调用
+            reverseFn() {
+                return this.msg.split('').reverse().join('') //反转
+            },
+            ContFn() {
+                return this.arr.filter(item => item > 60) //判断分数
+            },
+            btn() {
+                this.reverseMsg = '123'
+            }
+        },
+        watch: { //侦听器
+            msg(news, olds) {
+                console.log()
+            }
+        }
+
+    })
+</script>
+
+</html>
