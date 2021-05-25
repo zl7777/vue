@@ -1,0 +1,33 @@
+[{
+        "title": "酸奶",
+        "newprice": 4,
+        "oldprice": 6,
+        "num": 0,
+        "id": 1,
+        "img": "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1986179278,1118313821&fm=27&gp=0.jpg"
+    },
+    {
+        "title": "苹果",
+        "newprice": 10,
+        "oldprice": 12,
+        "num": 0,
+        "id": 2,
+        "img": "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1979198230,3799788659&fm=27&gp=0.jpg"
+    },
+    {
+        "title": "香蕉",
+        "newprice": 12,
+        "oldprice": 19,
+        "num": 0,
+        "id": 3,
+        "img": "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1055727654,337004439&fm=27&gp=0.jpg"
+    },
+    {
+        "title": "西瓜",
+        "newprice": 5,
+        "oldprice": 10,
+        "num": 0,
+        "id": 4,
+        "img": "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=234634259,4236876085&fm=27&gp=0.jpg"
+    }
+]
